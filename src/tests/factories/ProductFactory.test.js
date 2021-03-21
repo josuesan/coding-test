@@ -8,8 +8,14 @@ describe('Factory Product', () => {
     expect(factoryProduct).not.toBe(null);
   });
 
-  test('should return null when factory recive invalid name product as params', () => {
+  test('should throw a error when factory recive invalid name product as params', () => {
     expect(() => factoryProduct.createProduct('this product dont exist', 2, 0)).toThrow('Invalid product name');
+  });
+  test('should throw a error when factory recive NaN sellIn', () => {
+    expect(() => factoryProduct.createProduct('Full Coverage', 'x', 0)).toThrow('SellIn is not a number');
+  });
+  test('should throw a error when factory recive NaN price', () => {
+    expect(() => factoryProduct.createProduct('Full Coverage', 2, 'x')).toThrow('Price is not a number');
   });
 
   test('should return a FullCoverageProduct when factory recive full coverage as params', () => {

@@ -9,6 +9,12 @@ const {
 
 class ProductFactory {
   createProduct(name, sellIn, price) {
+    if (isNaN(sellIn)) {
+      throw new Error('SellIn is not a number');
+    }
+    if (isNaN(price)) {
+      throw new Error('Price is not a number');
+    }
     switch (name) {
       case 'Full Coverage':
         return new FullCoverageProduct(name, sellIn, price);
