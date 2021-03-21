@@ -1,6 +1,8 @@
+const fs = require('fs');
 const CarInsurance = require('./entities/CarInsurance');
 const ProductFactory = require('./factories/ProductFactory');
 
+const writeStream = fs.createWriteStream('./after-30-days.txt');
 const factory = new ProductFactory();
 
 const productsAtDayZero = [
@@ -20,17 +22,33 @@ const carInsurance = new CarInsurance(productsAtDayZero);
 
 const productPrinter = function (product) {
   console.log(`${product.name}, ${product.sellIn}, ${product.price}`);
+  writeStream.write(`${product.name}, ${product.sellIn}, ${product.price}\r\n`);
 };
-
+const printInitialData = () => {
+  console.log('Day 0');
+  writeStream.write('Day 0\r\n');
+  console.log('name, sellIn, price');
+  writeStream.write('name, sellIn, price\r\n');
+  carInsurance.products.forEach(productPrinter);
+  console.log('');
+  writeStream.write('\r\n');
+};
 // Print the initial status AKA Day 0
-console.log('Day 0');
-console.log('name, sellIn, price');
-carInsurance.products.forEach(productPrinter);
-console.log('');
+printInitialData();
 
 for (let i = 1; i <= 30; i += 1) {
   console.log(`Day ${i}`);
+  writeStream.write(`Day ${i}\r\n`);
   console.log('name, sellIn, price');
+  writeStream.write('name, sellIn, price\r\n');
   carInsurance.updatePrice().forEach(productPrinter);
   console.log('');
+  writeStream.write('\r\n');
 }
+writeStream.on('finish', () => {
+  console.log('***************************** ADITIONAL INFORMATION *****************************');
+  console.log('');
+  console.log('An after-30-days.txt file has been created with the 30 days report, if you want to see it in a file instead of the console.');
+  console.log('This file is located at the root of the directory and is self-generated in each execution. ');
+});
+writeStream.end();
