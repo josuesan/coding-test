@@ -21,4 +21,5 @@ describe('Low Coverage Product', () => {
     expect(() => factoryProduct.createProduct('Medium Coverage', 10, -20)).toThrow('The product price never is less than 0.')
   });
 
+
 });
