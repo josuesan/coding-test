@@ -32,7 +32,7 @@ class MegaCoverageProduct extends Product {
   }
 
   updatePrice() {
-    this.sellIn--;
+    // DO nothing is a lengendary product
   }
 }
 module.exports = MegaCoverageProduct;

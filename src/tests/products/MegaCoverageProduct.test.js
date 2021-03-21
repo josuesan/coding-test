@@ -6,14 +6,14 @@ describe('Mega Coverage Product', () => {
   test('should return the price 80 when past a day and the product is not expired', () => {
     const product = factoryProduct.createProduct('Mega Coverage', 1, 80);
     product.updatePrice();
-    expect(product.sellIn).toBe(0);
+    expect(product.sellIn).toBe(1);
     expect(product.price).toBe(80);
   });
 
   test('should return the price 80 when past a day and the product is expired', () => {
     const product = factoryProduct.createProduct('Mega Coverage', 0, 80);
     product.updatePrice();
-    expect(product.sellIn).toBe(-1);
+    expect(product.sellIn).toBe(0);
     expect(product.price).toBe(80);
   });
 
