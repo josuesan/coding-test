@@ -11,7 +11,11 @@ class SuperSaleProduct extends Product {
       this.sellIn--;
       return;
     }
-    this.price -= 2;
+    if (this.price > Product.minPrice()) {
+      this.price -= 2;
+      this.sellIn--;
+      return;
+    }
     this.sellIn--;
   }
 }

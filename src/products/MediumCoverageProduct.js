@@ -11,7 +11,11 @@ class MediumCoverageProduct extends Product {
       this.sellIn--;
       return;
     }
-    this.price--;
+    if (this.price > Product.minPrice()) {
+      this.price--;
+      this.sellIn--;
+      return;
+    }
     this.sellIn--;
   }
 }
