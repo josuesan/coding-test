@@ -10,9 +10,9 @@ const productsAtDayZero = [
   factory.createProduct('Low Coverage', 5, 7),
   factory.createProduct('Mega Coverage', 0, 80),
   factory.createProduct('Mega Coverage', -1, 80),
-  // factory.createProduct('Special Full Coverage', 15, 20),
-  // factory.createProduct('Special Full Coverage', 10, 49),
-  // factory.createProduct('Special Full Coverage', 5, 49),
+  factory.createProduct('Special Full Coverage', 15, 20),
+  factory.createProduct('Special Full Coverage', 10, 49),
+  factory.createProduct('Special Full Coverage', 5, 49),
   factory.createProduct('Super Sale', 3, 6),
 ];
 
