@@ -17,11 +17,11 @@ describe('Low Coverage Product', () => {
     expect(product.price).toBe(5);
   });
 
-  test('should throw a error if a product is created with the price is less than 0', () => {
+  test('should throw a error if a product is created with the price less than 0', () => {
     expect(() => factoryProduct.createProduct('Low Coverage', 1, -7)).toThrow('The product price never is less than 0.')
   });
 
-  test('should throw a error if a product is created with the price is grather than 50', () => {
+  test('should throw a error if a product is created with the price grather than 50', () => {
     expect(() => factoryProduct.createProduct('Low Coverage', 0, 100)).toThrow('The product price never is grather than 50.')
   });
 
