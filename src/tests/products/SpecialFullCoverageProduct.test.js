@@ -39,4 +39,11 @@ describe('Special Full Coverage Product', () => {
     expect(() => factoryProduct.createProduct('Special Full Coverage', 0, 51)).toThrow('The product price never is grather than 50.')
   });
 
+  test('should return the product with the sellIn decremented and the price equal, when the product has already reached the maximun price ', () => {
+    const product = factoryProduct.createProduct('Special Full Coverage', 10, 50);
+    product.updatePrice();
+    expect(product.sellIn).toBe(9);
+    expect(product.price).toBe(50);
+  });
+
 });

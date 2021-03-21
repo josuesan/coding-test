@@ -1,5 +1,7 @@
 class Product {
   constructor(name, sellIn, price) {
+    this.checkMinPrice(price);
+    this.checkMaxPrice(price);
     this.name = String(name);
     this.sellIn = Number(sellIn);
     this.price = Number(price);
@@ -14,12 +16,14 @@ class Product {
   }
 
   set price(price) {
-    // * In this method with have two alternatives, throw an error when some update is less than 0
-    // * EXAMPLE if price passed is -1
-    // * OTHERWISE: if price is passed less than 0, change this price to zero
-    // * EXAMPLE price -1 and change to 0
-    this.checkMinPrice(price);
-    this.checkMaxPrice(price);
+    if (price > Product.maxPrice()) {
+      this._price = Product.maxPrice();
+      return;
+    }
+    if (price < Product.minPrice()) {
+      this._price = Product.minPrice();
+      return;
+    }
     this._price = price;
   }
 

@@ -25,4 +25,18 @@ describe('Super Sale Product', () => {
     expect(() => factoryProduct.createProduct('Super Sale', 0, 100)).toThrow('The product price never is grather than 50.')
   });
 
+  test('should return the product with the sellIn decremented and the price equal, when the product has already reached the minimum price ', () => {
+    const product = factoryProduct.createProduct('Super Sale', 10, 0);
+    product.updatePrice();
+    expect(product.sellIn).toBe(9);
+    expect(product.price).toBe(0);
+  });
+
+  test('should return the product with the sellIn decremented and the price equal, when the product has already reached the minimum price and sellIn is expired', () => {
+    const product = factoryProduct.createProduct('Super Sale', 0, 0);
+    product.updatePrice();
+    expect(product.sellIn).toBe(-1);
+    expect(product.price).toBe(0);
+  });
+
 });

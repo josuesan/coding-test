@@ -25,4 +25,18 @@ describe('Medium Coverage Product', () => {
     expect(() => factoryProduct.createProduct('Medium Coverage', 0, 100)).toThrow('The product price never is grather than 50.')
   });
 
+  test('should return the product with the sellIn decremented and the price equal, when the product has already reached the minimun price ', () => {
+    const product = factoryProduct.createProduct('Medium Coverage', 10, 0);
+    product.updatePrice();
+    expect(product.sellIn).toBe(9);
+    expect(product.price).toBe(0);
+  });
+
+  test('should return the product with the sellIn decremented and the price equal, when the product has already reached the minimun price and sellIn is expired', () => {
+    const product = factoryProduct.createProduct('Medium Coverage', 0, 0);
+    product.updatePrice();
+    expect(product.sellIn).toBe(-1);
+    expect(product.price).toBe(0);
+  });
+
 });
