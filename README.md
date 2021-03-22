@@ -22,8 +22,8 @@ npm run server
 
 ## Docker Option
 
-Este proyecto contiene un dockerfile y un docker-compose.
-Se recomienda hacer un clone del proyecto, ejecutar el comando
+This project contains a dockerfile and a docker-compose.
+It is recommended to make a clone of the project, run the command 
 ```
 docker-compose  up -d --build
 ```
