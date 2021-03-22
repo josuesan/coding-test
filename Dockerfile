@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 4500
 
-CMD [ "npm","run", "after-30-day"]
+CMD npm run test && npm run after-30-days && npm run server

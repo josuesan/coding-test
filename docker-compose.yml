@@ -1,0 +1,15 @@
+version: "3"
+services:
+  node:
+    container_name: comparaonline
+    restart: always
+    build: .
+    ports:
+      - "4500:4500"
+    links:
+      - "web"
+  web:
+    container_name: react-comparaonline
+    image: josuesan/react-web-comparaonline-test
+    ports:
+      - "3000:3000"
